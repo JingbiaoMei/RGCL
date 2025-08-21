@@ -1,13 +1,6 @@
 # RGCL: Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning
 
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improved-fine-tuning-of-large-multimodal-1/hateful-meme-classification-on-harm-p)](https://paperswithcode.com/sota/hateful-meme-classification-on-harm-p?p=improved-fine-tuning-of-large-multimodal-1)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improved-fine-tuning-of-large-multimodal-1/meme-classification-on-multioff)](https://paperswithcode.com/sota/meme-classification-on-multioff?p=improved-fine-tuning-of-large-multimodal-1)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improved-fine-tuning-of-large-multimodal-1/hateful-meme-classification-on-pridemm)](https://paperswithcode.com/sota/hateful-meme-classification-on-pridemm?p=improved-fine-tuning-of-large-multimodal-1)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improved-fine-tuning-of-large-multimodal-1/meme-classification-on-hateful-memes)](https://paperswithcode.com/sota/meme-classification-on-hateful-memes?p=improved-fine-tuning-of-large-multimodal-1)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/improved-fine-tuning-of-large-multimodal-1/hateful-meme-classification-on-harmeme)](https://paperswithcode.com/sota/hateful-meme-classification-on-harmeme?p=improved-fine-tuning-of-large-multimodal-1)
-
-
 This is the official repo for the paper: 
 - Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning (CLIP-RGCL)
 - Robust Adaptation of Large Multimodal Models for Retrieval Augmented Hateful Meme Detection (RA-HMD)
@@ -18,10 +11,11 @@ This is the official repo for the paper:
 
 
 ## Updates
+- [21/08/2025] 🔥🔥🔥🔥🔥 RA-HMD just got accepted to EMNLP2025 Main. We will release the full code shortly.
 - [27/03/2025] 🔥🔥🔥🔥RA-HMD Stage 1 code has been released. Check out the code from the submodule in [LLAMA-FACTORY@a88f610](https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL/tree/a88f610e9fa46d1ef1669c5dbc39ee9008f95c21).
 - [18/02/2025] 🔥🔥🔥Our new work, RA-HMD, has been released. Check it out here: [https://arxiv.org/abs/2502.13061](https://arxiv.org/abs/2502.13061).
 - [29/10/2024] 🔥🔥Initial Release of the code base.
-- [10/08/2024] 🔥Our paper appears at ACL2024 Main.
+- [10/08/2024] 🔥RGCL appears at ACL2024 Main.
 
 
 # CLIP-RGCL

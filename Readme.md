@@ -2,7 +2,7 @@
 
 
 This is the official repo for the paper: 
-- Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning (CLIP-RGCL, ACL2024)
+- Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning (RGCL, ACL2024)
 - Robust Adaptation of Large Multimodal Models for Retrieval Augmented Hateful Meme Detection (RA-HMD, EMNLP2025)
 ----
 - The link to the RGCL paper is [https://aclanthology.org/2024.acl-long.291.pdf](https://aclanthology.org/2024.acl-long.291.pdf).

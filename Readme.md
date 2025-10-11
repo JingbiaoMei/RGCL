@@ -101,6 +101,20 @@ pip install qwen_vl_utils torchvision
 conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl
 ```
 
+## Reproduced Qwen2.5-VL Results
+
+In addition to the Qwen2-VL results reported in the main paper, we provide further comparisons using **Qwen2.5-VL-7B** on the same evaluation benchmarks.
+
+| Model             | HatefulMemes (Acc) | HatefulMemes (F1) | MAMI (Acc) | MAMI (F1) | PrideMM (Acc) | PrideMM (F1) |
+|-------------------|-------------------:|------------------:|------------:|-----------:|---------------:|--------------:|
+| **RA-HMD (Qwen2.5-VL-7B)** | **80.8** | **80.1** | **81.0** | **81.0** | **78.0** | **77.8** |
+
+In addition, the rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of 5.4 for RA-HMD (Qwen2.5-VL-7B) explanations.
+
+Overall, the performance of RA-HMD (Qwen2.5-VL-7B) is broadly comparable to that of RA-HMD (Qwen2-VL-7B), with slight variations—some results being higher and others slightly lower.
+
+
+
 
 # Citation
 If our work helped your research, please kindly cite our paper

@@ -139,15 +139,26 @@ If our work helped your research, please kindly cite our paper
     pages = "5333--5347"
 }
 
- @article{RAHMD2025Mei, title={Robust Adaptation of Large Multimodal Models for Retrieval Augmented Hateful Meme Detection},
-          url={http://arxiv.org/abs/2502.13061},
-          DOI={10.48550/arXiv.2502.13061},
-          note={arXiv:2502.13061 [cs]},
-          number={arXiv:2502.13061},
-          publisher={arXiv},
-          author={Mei, Jingbiao and Chen, Jinghong and Yang, Guangyu and Lin, Weizhe and Byrne, Bill},
-          year={2025},
-          month=may }
+@inproceedings{RAHMD2025Mei,
+    title = "Robust Adaptation of Large Multimodal Models for Retrieval Augmented Hateful Meme Detection",
+    author = "Mei, Jingbiao  and
+      Chen, Jinghong  and
+      Yang, Guangyu  and
+      Lin, Weizhe  and
+      Byrne, Bill",
+    editor = "Christodoulopoulos, Christos  and
+      Chakraborty, Tanmoy  and
+      Rose, Carolyn  and
+      Peng, Violet",
+    booktitle = "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2025",
+    address = "Suzhou, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.emnlp-main.1215/",
+    pages = "23817--23839",
+    ISBN = "979-8-89176-332-6",
+}
 
 
 

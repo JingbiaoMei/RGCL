@@ -122,9 +122,14 @@ If training appears to be stuck, this is often related to the FAISS installation
 
 ## RA-HMD Stage 1 Code
 
-The Stage 1 training code is based on an updated version of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) with support for Qwen2.5-VL and newer models. (Newer than the version implemented in the original RA-HMD paper. Some numbers may vary slightly due to version changes.)
+The Stage 1 training code is based on an updated version of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). We provide **two versions** as separate submodules:
 
-### Environment Setup
+- **`RA-HMD/LLAMA-FACTORY`**: Default version with Qwen2.5-VL support (recommended for reproduction)
+- **`RA-HMD/LLAMA-FACTORY-Ver202512`**: Latest December 2025 version with InternVL-3, Qwen3-VL support
+
+**Note:** Both versions are newer than the original paper implementation. Minor variations in results may occur due to version differences. Choose based on your target model.
+
+### Environment Setup (Default Version)
 
 Clone the repository and set up the environment:
 ```shell
@@ -186,7 +191,7 @@ The rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of **5.4
 
 ### December 2025 Update - Support for Latest Models
 
-**LLaMA-Factory Ver2025.12** is now available with support for the latest models including InternVL-3, Qwen3-VL, and more. We provide a ported version of RA-HMD Stage 1 training code compatible with this release.
+**LLaMA-Factory Ver2025.12** is now available with support for the latest models including InternVL-3, Qwen3-VL, and more. We provide a ported version of RA-HMD Stage 1 training code compatible with this release as a separate submodule.
 
 #### Installation
 
@@ -197,9 +202,8 @@ cd RGCL
 # Initialize and update submodules
 git submodule update --init --recursive
 
-# Navigate to the LLaMA-Factory submodule
-cd RA-HMD/LLAMA-FACTORY
-git checkout Ver202512
+# Navigate to the Ver202512 LLaMA-Factory submodule
+cd RA-HMD/LLAMA-FACTORY-Ver202512
 conda create -n llamafact202512 python=3.10 -y
 conda activate llamafact202512
 pip install -e ".[torch,metrics,deepspeed,liger-kernel,bitsandbytes,qwen]"

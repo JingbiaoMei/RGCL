@@ -1,3 +1,7 @@
 [submodule "RA-HMD/LLAMA-FACTORY"]
 	path = RA-HMD/LLAMA-FACTORY
 	url = https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL.git
+[submodule "RA-HMD/LLAMA-FACTORY-Ver202512"]
+	path = RA-HMD/LLAMA-FACTORY-Ver202512
+	url = https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL.git
+	branch = Ver202512

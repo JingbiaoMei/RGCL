@@ -100,17 +100,19 @@ If training appears to be stuck, this is often related to the FAISS installation
 
 # RA-HMD
 
+
+## RA-HMD Stage 1 Code
 The Stage 1 training code for RA-HMD is now available. This release is based on an updated version of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) (newer than the paper implementation) to support Qwen2.5-VL training.
 
 **Dataset:**  
 Original datasets and LLaMA-Factory-compatible formats are available on [HuggingFace](https://huggingface.co/datasets/Jingbiao/RA-HMD). 
 
-## Environment Setup
+### Environment Setup
 
 Clone the repository and set up the environment:
 ```shell
 git clone https://github.com/JingbiaoMei/RGCL.git
-cd RGCL/LLAMA-FACTORY
+cd RGCL/RA-HMD/LLAMA-FACTORY
 conda create -n llamafact python=3.10 -y
 conda activate llamafact
 pip install -e ".[torch,metrics,deepspeed,liger-kernel,bitsandbytes,qwen]"
@@ -120,7 +122,7 @@ pip install qwen_vl_utils torchvision
 conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl -y
 ```
 
-## Reproduced Qwen2.5-VL Results
+### Reproduced Qwen2.5-VL Results
 
 In addition to the Qwen2-VL results reported in the paper, we provide evaluation results using **Qwen2.5-VL-7B** on the same benchmarks.
 
@@ -133,15 +135,15 @@ The rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of **5.4
 **Summary:** RA-HMD (Qwen2.5-VL-7B) achieves comparable performance to RA-HMD (Qwen2-VL-7B), with minor variations across different metrics.
 
 
-## December 2025 Update
+### December 2025 Update
 
 **LLaMA-Factory Ver2025.12** is now available with support for the latest models including InternVL-3, Qwen3-VL, and more. We provide a ported version of RA-HMD Stage 1 training code compatible with this release.
 
-### Installation
+#### Installation
 
 ```shell
 git clone https://github.com/JingbiaoMei/RGCL.git
-cd RGCL/LLAMA-FACTORY
+cd RGCL/RA-HMD/LLAMA-FACTORY
 git checkout Ver202512
 conda create -n llamafact202512 python=3.10 -y
 conda activate llamafact202512
@@ -151,7 +153,7 @@ pip install torchmetrics wandb easydict qwen_vl_utils torchvision
 conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl -y
 ```
 
-### Troubleshooting
+#### Troubleshooting
 
 **Slow Tokenization:**  
 If you experience extremely slow tokenization, set `use_fast_tokenizer: false` in the LLaMA-Factory config files. See [issue #8600](https://github.com/hiyouga/LLaMA-Factory/issues/8600) for details.
@@ -160,7 +162,17 @@ If you experience extremely slow tokenization, set `use_fast_tokenizer: false` i
 Training may become extremely slow when using PyTorch 2.9 with Qwen3-VL. Consider downgrading to an earlier PyTorch version. See [Qwen3-VL issue #1701](https://github.com/QwenLM/Qwen3-VL/issues/1701) for more information.
 
 
-## Citation
+## RA-HMD Stage 2 Code
+
+Stage 1 fine-tuning delivers strong in-domain supervised performance. As shown in our ablation studies, Stage 2 does not significantly improve in-domain metrics. However, Stage 2 introduces a contrastive learning objective that enhances retrieval quality, leading to better generalization in cross-dataset, out-of-domain, and adversarial scenarios. Thus, if your focus is only on in-domain performance, Stage 1 suffices. The stage 2's complexity is not justified for marginal in-domain gains.
+
+Stage 2 requires an additional preprocessing step:
+- First, generate LMM embeddings using `RA-HMD/LLAMA-FACTORY/src/llamafactory/custom/extract_features.py`.
+- Then, use the generated embeddings to refine the MLP layers via Stage 2 fine-tuning. The training scripts for Stage 2 are located in `RA-HMD/Stage2`.
+
+
+
+# Citation
 
 If you find our work useful for your research, please consider citing:
 ```

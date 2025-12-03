@@ -13,18 +13,36 @@ This is the official repository for two research papers:
 
 
 ## Updates
-- **[21/08/2025]** 🔥 RA-HMD accepted to EMNLP 2025 Main Conference. Full code will be released shortly.
+- **[03/12/2025]** 🔥 RA-HMD full code release for both Stage 1 and Stage 2 training. Updated support for newer models (Qwen3-VL) in Stage 1 training.
+- **[21/08/2025]** 🔥 RA-HMD accepted to EMNLP 2025 Main Conference (Oral Presentation). Full code will be released shortly.
 - **[27/03/2025]** 🔥 RA-HMD Stage 1 code released. Available in the [LLAMA-FACTORY@a88f610](https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL/tree/a88f610e9fa46d1ef1669c5dbc39ee9008f95c21) submodule.
 - **[18/02/2025]** 🔥 RA-HMD paper released on [arXiv](https://arxiv.org/abs/2502.13061).
 - **[29/10/2024]** 🔥 Initial codebase release.
 - **[10/08/2024]** 🔥 RGCL presented at ACL 2024 Main Conference.
 
+## Table of Contents
+- [RGCL](#rgcl)
+  - [Environment Setup](#environment-setup)
+  - [Dataset Preparation](#dataset-preparation)
+  - [Training and Evaluation](#training-and-evaluation)
+- [RA-HMD](#ra-hmd)
+  - [Stage 1: Supervised Fine-tuning](#ra-hmd-stage-1-code)
+  - [Stage 2: Contrastive Learning](#ra-hmd-stage-2-code)
+- [Citation](#citation)
+
+---
 
 # RGCL
 
-## Usage
+RGCL (Retrieval-Guided Contrastive Learning) is a method for improving hateful meme detection through dynamic retrieval and contrastive learning.
 
-### Environment Setup
+## Quick Start
+
+1. Set up the environment following the [Environment Setup](#environment-setup) section
+2. Prepare your datasets as described in [Dataset Preparation](#dataset-preparation)
+3. Run `bash scripts/experiments.sh` to start training
+
+## Environment Setup
 
 Create and activate a new conda environment:
 ```shell
@@ -93,20 +111,18 @@ bash scripts/experiments.sh
 ### Common Issues
 
 **Training Hangs or Freezes:**  
-If training appears to be stuck, this is often related to the FAISS installation. Ensure FAISS-GPU is properly installed following the environment setup instructions above. 
+If training appears to be stuck, this is often related to the FAISS installation. Ensure FAISS-GPU is properly installed following the environment setup instructions above.
 
 
 
+---
 
 # RA-HMD
 
 
 ## RA-HMD Stage 1 Code
-The Stage 1 training code for RA-HMD is now available. This release is based on an updated version of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) (newer than the paper implementation) to support Qwen2.5-VL training.
 
-
-
-
+The Stage 1 training code is based on an updated version of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) with support for Qwen2.5-VL and newer models. (Newer than the version implemented in the original RA-HMD paper. Some numbers may vary slightly due to version changes.)
 
 ### Environment Setup
 
@@ -130,13 +146,15 @@ conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl -y
 ```
 
 
-### Dataset
-**Dataset:**  
-Original datasets and LLaMA-Factory-compatible formats are available on [HuggingFace](https://huggingface.co/datasets/Jingbiao/RA-HMD). 
+### Dataset Preparation
 
+**Download:**  
+Original datasets and LLaMA-Factory-compatible formats are available on [HuggingFace](https://huggingface.co/datasets/Jingbiao/RA-HMD).
 
+**Format:**  
 The dataset follows the ShareGPT-style conversational format required by LLaMA-Factory. Below is an example entry from `data/dataset_info.json`.
-You must place the actual JSON file (e.g., sharegpt_FB_train_instructblip.json) into the path specified under "file_name":
+
+**Important:** Place the actual JSON file (e.g., `sharegpt_FB_train_instructblip.json`) into the path specified under `file_name`:
 ```json
   "hatefulmemes": {
     "file_name": "gt/FB/sharegpt_FB_train_instructblip.json",
@@ -166,7 +184,7 @@ The rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of **5.4
 **Summary:** RA-HMD (Qwen2.5-VL-7B) achieves comparable performance to RA-HMD (Qwen2-VL-7B), with minor variations across different metrics.
 
 
-### December 2025 Update
+### December 2025 Update - Support for Latest Models
 
 **LLaMA-Factory Ver2025.12** is now available with support for the latest models including InternVL-3, Qwen3-VL, and more. We provide a ported version of RA-HMD Stage 1 training code compatible with this release.
 

@@ -104,8 +104,9 @@ If training appears to be stuck, this is often related to the FAISS installation
 ## RA-HMD Stage 1 Code
 The Stage 1 training code for RA-HMD is now available. This release is based on an updated version of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) (newer than the paper implementation) to support Qwen2.5-VL training.
 
-**Dataset:**  
-Original datasets and LLaMA-Factory-compatible formats are available on [HuggingFace](https://huggingface.co/datasets/Jingbiao/RA-HMD). 
+
+
+
 
 ### Environment Setup
 
@@ -120,6 +121,30 @@ pip install torchmetrics wandb easydict
 pip install qwen_vl_utils torchvision
 # Install FAISS
 conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl -y
+```
+
+
+### Dataset
+**Dataset:**  
+Original datasets and LLaMA-Factory-compatible formats are available on [HuggingFace](https://huggingface.co/datasets/Jingbiao/RA-HMD). 
+
+
+The dataset follows the ShareGPT-style conversational format required by LLaMA-Factory. Below is an example entry from `data/dataset_info.json`.
+You must place the actual JSON file (e.g., sharegpt_FB_train_instructblip.json) into the path specified under "file_name":
+```json
+  "hatefulmemes": {
+    "file_name": "gt/FB/sharegpt_FB_train_instructblip.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant"
+    }
 ```
 
 ### Reproduced Qwen2.5-VL Results

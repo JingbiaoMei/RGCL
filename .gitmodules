@@ -1,3 +1,3 @@
-[submodule "LLAMA-FACTORY"]
-	path = LLAMA-FACTORY
-	url = https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL.git
+[submodule "RA-HMD/LLAMA-FACTORY"]
+    path = RA-HMD/LLAMA-FACTORY
+    url = https://github.com/hiyouga/LLaMA-Factory.git

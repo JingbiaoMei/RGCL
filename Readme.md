@@ -113,7 +113,13 @@ The Stage 1 training code for RA-HMD is now available. This release is based on 
 Clone the repository and set up the environment:
 ```shell
 git clone https://github.com/JingbiaoMei/RGCL.git
-cd RGCL/RA-HMD/LLAMA-FACTORY
+cd RGCL
+
+# Initialize and update submodules
+git submodule update --init --recursive
+
+# Navigate to the LLaMA-Factory submodule
+cd RA-HMD/LLAMA-FACTORY
 conda create -n llamafact python=3.10 -y
 conda activate llamafact
 pip install -e ".[torch,metrics,deepspeed,liger-kernel,bitsandbytes,qwen]"
@@ -168,7 +174,13 @@ The rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of **5.4
 
 ```shell
 git clone https://github.com/JingbiaoMei/RGCL.git
-cd RGCL/RA-HMD/LLAMA-FACTORY
+cd RGCL
+
+# Initialize and update submodules
+git submodule update --init --recursive
+
+# Navigate to the LLaMA-Factory submodule
+cd RA-HMD/LLAMA-FACTORY
 git checkout Ver202512
 conda create -n llamafact202512 python=3.10 -y
 conda activate llamafact202512

@@ -1,123 +1,168 @@
 # RGCL: Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning
 
+This is the official repository for two research papers:
+- **RGCL**: Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning (ACL 2024)
+- **RA-HMD**: Robust Adaptation of Large Multimodal Models for Retrieval Augmented Hateful Meme Detection (EMNLP 2025 Oral)
 
-This is the official repo for the paper: 
-- Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning (RGCL, ACL2024)
-- Robust Adaptation of Large Multimodal Models for Retrieval Augmented Hateful Meme Detection (RA-HMD, EMNLP2025 Oral)
-----
-- The link to the RGCL paper is [https://aclanthology.org/2024.acl-long.291.pdf](https://aclanthology.org/2024.acl-long.291.pdf).
-- The link to the RA-HMD paper is [https://arxiv.org/abs/2502.13061](https://arxiv.org/abs/2502.13061).
-- The link to the project page is [here](https://rgclmm.github.io/).
+---
+
+**Resources:**
+- [RGCL Paper](https://aclanthology.org/2024.acl-long.291.pdf) (ACL 2024)
+- [RA-HMD Paper](https://aclanthology.org/2025.emnlp-main.1215/) (EMNLP 2025)
+- [Project Page](https://rgclmm.github.io/)
 
 
 ## Updates
-- [21/08/2025] 🔥🔥🔥🔥🔥 RA-HMD just got accepted to EMNLP2025 Main. We will release the full code shortly.
-- [27/03/2025] 🔥🔥🔥🔥RA-HMD Stage 1 code has been released. Check out the code from the submodule in [LLAMA-FACTORY@a88f610](https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL/tree/a88f610e9fa46d1ef1669c5dbc39ee9008f95c21).
-- [18/02/2025] 🔥🔥🔥Our new work, RA-HMD, has been released. Check it out here: [https://arxiv.org/abs/2502.13061](https://arxiv.org/abs/2502.13061).
-- [29/10/2024] 🔥🔥Initial Release of the code base.
-- [10/08/2024] 🔥RGCL appears at ACL2024 Main.
+- **[21/08/2025]** 🔥 RA-HMD accepted to EMNLP 2025 Main Conference. Full code will be released shortly.
+- **[27/03/2025]** 🔥 RA-HMD Stage 1 code released. Available in the [LLAMA-FACTORY@a88f610](https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL/tree/a88f610e9fa46d1ef1669c5dbc39ee9008f95c21) submodule.
+- **[18/02/2025]** 🔥 RA-HMD paper released on [arXiv](https://arxiv.org/abs/2502.13061).
+- **[29/10/2024]** 🔥 Initial codebase release.
+- **[10/08/2024]** 🔥 RGCL presented at ACL 2024 Main Conference.
 
 
-# CLIP-RGCL
-Useage
---------------------
-## Create Env
+# RGCL
+
+## Usage
+
+### Environment Setup
+
+Create and activate a new conda environment:
 ```shell
 conda create -n RGCL python=3.10 -y
 conda activate RGCL
 ```
 
-Install pytorch
-```
+Install PyTorch:
+```shell
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
 ```
 
-Install FAISS
-```
+Install FAISS:
+```shell
 conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl -y
 ```
 
-```
+Install additional requirements:
+```shell
 pip install -r requirements.txt
 ```
 
 
-Dataset Preparation 
---------------------
-#### Image data
-Copy images into `./data/image/dataset_name/All` folder.
-For example: `./data/image/FB/All/12345.png`, `./data/image/HarMeme/All`, `./data/image/Propaganda/All`, etc..
-#### Annotation data
-Copy `jsonl` annotation file into `./data/gt/dataset_name` folder.
+## Dataset Preparation
 
-#### Generate CLIP Embedding
-We generate CLIP embedding prior to training to avoid repeated generation during training.
+### Image Data
+Place all images in the `./data/image/dataset_name/All` directory structure.
+
+**Examples:**
+- `./data/image/FB/All/12345.png`
+- `./data/image/HarMeme/All/`
+- `./data/image/Propaganda/All/`
+
+### Annotation Data
+Place JSONL annotation files in the `./data/gt/dataset_name` directory.
+
+### Generate CLIP Embeddings
+To optimize training efficiency, CLIP embeddings are pre-generated to avoid redundant computation during training.
 
 ```shell
 python3 src/utils/generate_CLIP_embedding_HF.py --dataset "FB"
 python3 src/utils/generate_CLIP_embedding_HF.py --dataset "HarMeme"
-
 ```
 
-#### Generate ALIGN Embedding
+### Generate ALIGN Embeddings
 ```shell
 python3 src/utils/generate_ALIGN_embedding_HF.py --dataset "FB"
 python3 src/utils/generate_ALIGN_embedding_HF.py --dataset "HarMeme"
-
 ```
 
-#### Generate Sparse Retrieval Index
-##### Generate VinVL Bounding Box Prediction (Optional)
-We obtained the object detection bounding box with VinVL. To simplify your process to reproduce the results, we release the pre-extracted bbox prediction for the HatefulMemes dataset: [https://huggingface.co/datasets/Jingbiao/rgcl-sparse-retrieval/tree/main](https://huggingface.co/datasets/Jingbiao/rgcl-sparse-retrieval/tree/main)  
+### Generate Sparse Retrieval Index (Optional)
+We provide Sparse Retrieval as a comparison to the proposed dynamic retrieval method in RGCL.
+#### VinVL Bounding Box Prediction 
+Object detection bounding boxes were generated using VinVL. To facilitate reproducibility, we provide pre-extracted bounding box predictions for the HatefulMemes dataset:
+
+**Download:** [HuggingFace Dataset](https://huggingface.co/datasets/Jingbiao/rgcl-sparse-retrieval/tree/main)  
 
 
-Training and Evalution 
---------------------
+## Training and Evaluation
+
+Run the following command to start training and evaluation:
+```shell
+bash scripts/experiments.sh
 ```
-bash scripts\experiments.sh
-```
 
-## Common Issues
-If you experience being stuck in training, it might be due to the `faiss` installation. 
+### Common Issues
 
-
+**Training Hangs or Freezes:**  
+If training appears to be stuck, this is often related to the FAISS installation. Ensure FAISS-GPU is properly installed following the environment setup instructions above. 
 
 
-# (WIP) RA-HMD
-We have now released the code for the stage 1 training of the RA-HMD. The released version is based on a newer [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) version than we used in the paper to support Qwen2.5-vl training. We will shortly release the checkpoints. 
 
-For data, we have uploaded the original datasets and data format after conversion for LLaMA-Factory here: [https://huggingface.co/datasets/Jingbiao/RA-HMD](https://huggingface.co/datasets/Jingbiao/RA-HMD). 
 
-## Setup Environment 
-```
+# RA-HMD
+
+The Stage 1 training code for RA-HMD is now available. This release is based on an updated version of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) (newer than the paper implementation) to support Qwen2.5-VL training.
+
+**Dataset:**  
+Original datasets and LLaMA-Factory-compatible formats are available on [HuggingFace](https://huggingface.co/datasets/Jingbiao/RA-HMD). 
+
+## Environment Setup
+
+Clone the repository and set up the environment:
+```shell
 git clone https://github.com/JingbiaoMei/RGCL.git
 cd RGCL/LLAMA-FACTORY
-conda create -n llamafact python=3.10
+conda create -n llamafact python=3.10 -y
 conda activate llamafact
 pip install -e ".[torch,metrics,deepspeed,liger-kernel,bitsandbytes,qwen]"
 pip install torchmetrics wandb easydict
 pip install qwen_vl_utils torchvision
 # Install FAISS
-conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl
+conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl -y
 ```
 
 ## Reproduced Qwen2.5-VL Results
 
-In addition to the Qwen2-VL results reported in the main paper, we provide further comparisons using **Qwen2.5-VL-7B** on the same evaluation benchmarks.
+In addition to the Qwen2-VL results reported in the paper, we provide evaluation results using **Qwen2.5-VL-7B** on the same benchmarks.
 
 | Model             | HatefulMemes (Acc) | HatefulMemes (F1) | MAMI (Acc) | MAMI (F1) | PrideMM (Acc) | PrideMM (F1) |
 |-------------------|-------------------:|------------------:|------------:|-----------:|---------------:|--------------:|
 | **RA-HMD (Qwen2.5-VL-7B)** | **80.8** | **80.1** | **81.0** | **81.0** | **78.0** | **77.8** |
 
-In addition, the rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of 5.4 for RA-HMD (Qwen2.5-VL-7B) explanations.
+The rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of **5.4** for RA-HMD (Qwen2.5-VL-7B) explanations.
 
-Overall, the performance of RA-HMD (Qwen2.5-VL-7B) is broadly comparable to that of RA-HMD (Qwen2-VL-7B), with slight variations—some results being higher and others slightly lower.
-
-
+**Summary:** RA-HMD (Qwen2.5-VL-7B) achieves comparable performance to RA-HMD (Qwen2-VL-7B), with minor variations across different metrics.
 
 
-# Citation
-If our work helped your research, please kindly cite our paper
+## December 2025 Update
+
+**LLaMA-Factory Ver2025.12** is now available with support for the latest models including InternVL-3, Qwen3-VL, and more. We provide a ported version of RA-HMD Stage 1 training code compatible with this release.
+
+### Installation
+
+```shell
+git clone https://github.com/JingbiaoMei/RGCL.git
+cd RGCL/LLAMA-FACTORY
+git checkout Ver202512
+conda create -n llamafact202512 python=3.10 -y
+conda activate llamafact202512
+pip install -e ".[torch,metrics,deepspeed,liger-kernel,bitsandbytes,qwen]"
+pip install torchmetrics wandb easydict qwen_vl_utils torchvision
+# Install FAISS
+conda install -c pytorch -c nvidia faiss-gpu=1.7.4 mkl=2021 blas=1.0=mkl -y
+```
+
+### Troubleshooting
+
+**Slow Tokenization:**  
+If you experience extremely slow tokenization, set `use_fast_tokenizer: false` in the LLaMA-Factory config files. See [issue #8600](https://github.com/hiyouga/LLaMA-Factory/issues/8600) for details.
+
+**Slow Training with PyTorch 2.9:**  
+Training may become extremely slow when using PyTorch 2.9 with Qwen3-VL. Consider downgrading to an earlier PyTorch version. See [Qwen3-VL issue #1701](https://github.com/QwenLM/Qwen3-VL/issues/1701) for more information.
+
+
+## Citation
+
+If you find our work useful for your research, please consider citing:
 ```
 @inproceedings{RGCL2024Mei,
     title = "Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning",

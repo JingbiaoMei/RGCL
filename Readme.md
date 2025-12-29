@@ -182,7 +182,10 @@ In addition to the Qwen2-VL results reported in the paper, we provide evaluation
 
 | Model             | HatefulMemes (Acc) | HatefulMemes (F1) | MAMI (Acc) | MAMI (F1) | PrideMM (Acc) | PrideMM (F1) |
 |-------------------|-------------------:|------------------:|------------:|-----------:|---------------:|--------------:|
-| **RA-HMD (Qwen2.5-VL-7B)** | **80.8** | **80.1** | **81.0** | **81.0** | **78.0** | **77.8** |
+| **RA-HMD (Qwen2.5-VL-7B)** | 80.8 | 80.1 | 81.0 | 81.0 | 78.0 | 77.8 |
+| **RA-HMD (Qwen2-VL-7B)** | 82.1 | 79.7 | 79.9 | 81.2 | 78.1 | 78.4 |
+| **RA-HMD (Qwen2.5-VL-3B)** | 79.5 | 76.2 | 80.7 | 80.1 | 77.1 | 77.6 |
+| **RA-HMD (Qwen2-VL-2B)** | 79.1 | 77.7 | 79.4 | 79.1 | 76.0 | 76.7 |
 
 The rubric-based LLM-as-Judge evaluation on HatefulMemes yields a score of **5.4** for RA-HMD (Qwen2.5-VL-7B) explanations.
 

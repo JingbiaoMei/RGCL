@@ -13,6 +13,7 @@ This is the official repository for two research papers:
 
 
 ## Updates
+- **[01/03/2026]** 🔥 ExPO-HM accepted to ICLR 2026. A novel explain-then-detect framework achieving SOTA on hateful meme detection with interpretable explanations. Paper: [arXiv](https://arxiv.org/abs/2510.08630), Code: [GitHub](https://github.com/JingbiaoMei/ExPO-HM).
 - **[03/12/2025]** 🔥 RA-HMD full code release for both Stage 1 and Stage 2 training. Updated support for newer models (Qwen3-VL) in Stage 1 training.
 - **[21/08/2025]** 🔥 RA-HMD accepted to EMNLP 2025 Main Conference (Oral Presentation). Full code will be released shortly.
 - **[27/03/2025]** 🔥 RA-HMD Stage 1 code released. Available in the [LLAMA-FACTORY@a88f610](https://github.com/JingbiaoMei/LLaMA-Factory-LMM-RGCL/tree/a88f610e9fa46d1ef1669c5dbc39ee9008f95c21) submodule.

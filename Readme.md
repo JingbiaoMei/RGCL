@@ -3,6 +3,7 @@
 This is the official repository for two research papers:
 - **RGCL**: Improving Hateful Meme Detection through Retrieval-Guided Contrastive Learning (ACL 2024)
 - **RA-HMD**: Robust Adaptation of Large Multimodal Models for Retrieval Augmented Hateful Meme Detection (EMNLP 2025 Oral)
+[![Papers with Code: SOTA on Hateful Memes (Test Seen)](https://paperswithcode.co/api/v1/papers/2502.13061/leaderboard-badge.svg?live=1)](https://paperswithcode.co/paper/2502.13061)
 
 ---
 
